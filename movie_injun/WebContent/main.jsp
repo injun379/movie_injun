@@ -5,26 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/reset.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/layout.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/module.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/common.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/content.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/eggupdate.css" />
-<link rel="stylesheet" media="print" type="text/css"
-	href="./css/print.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="./css/content_1207.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" media="all" type="text/css" href="./css/reset.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/layout.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/module.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/common.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/content.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/eggupdate.css" />
+<link rel="stylesheet" media="print" type="text/css" href="./css/print.css" />
+<link rel="stylesheet" media="all" type="text/css" href="./css/content_1207.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CGV 메인페이지</title>
 </head>
 <body class="">

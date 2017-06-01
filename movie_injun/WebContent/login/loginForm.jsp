@@ -5,26 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/layout.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/reset.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/module.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/common.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/content.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/eggupdate.css" />
-<link rel="stylesheet" media="all" type="text/css"
-	href="<%= request.getContextPath() %>/css/content_1207.css" />
-<link rel="stylesheet" media="print" type="text/css"
-	href="<%= request.getContextPath() %>/css/print.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/reset.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/layout.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/module.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/common.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/content.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/eggupdate.css" />
+<link rel="stylesheet" media="print" type="text/css" href="<%= request.getContextPath() %>/css/print.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<%= request.getContextPath() %>/css/content_1207.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CGV로그인</title>
 </head>
 <body class="">
@@ -43,18 +33,13 @@
 									src="../images/common/btn/btn_home.png" /></a></li>
 							<li><a href="#">회원서비스</a></li>
 							<li class="last">로그인</li>
-
-
 						</ul>
 					</div>
 					<div class="sect-special">
 						<ul>
-
 							<li><a href="/user/vip-lounge/">VIP LOUNGE</a></li>
-							<li><a href="/user/memberShip/ClubService.aspx" title="새창"
-								class="specialclub">Club서비스</a></li>
-							<li><a href="http://phototicket.cgv.co.kr/" title="새창"
-								class="photi" target="_blank">포토티켓</a></li>
+							<li><a href="/user/memberShip/ClubService.aspx" title="새창" class="specialclub">Club서비스</a></li>
+							<li><a href="http://phototicket.cgv.co.kr/" title="새창" class="photi" target="_blank">포토티켓</a></li>
 						</ul>
 					</div>
 				</div>
@@ -65,8 +50,6 @@
 			<div id="contents" class="">
 
 				<!-- Contents Start -->
-
-
 
 				<!-- 실컨텐츠 시작 -->
 				<div class="wrap-login">

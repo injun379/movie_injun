@@ -21,7 +21,7 @@
 				<li><a
 					href="<%= request.getContextPath() %>/login/loginForm.jsp"
 					class="login"><span>로그인</span></a></li>
-				<li><a href="#" class="join"><span>회원가입</span></a></li>
+				<li><a href="<%= request.getContextPath() %>/join/memberInsertForm.jsp" class="join"><span>회원가입</span></a></li>
 				<%		
 	}else{
 %>

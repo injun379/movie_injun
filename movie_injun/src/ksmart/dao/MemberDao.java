@@ -11,6 +11,43 @@ public class MemberDao {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
+	// 회원 정보 입력
+	
+	public void insertMember(Member m) {
+		DriverDB driverdb = new DriverDB();
+		
+		try {
+			conn = driverdb.getConnection();
+			stmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?)");
+		
+			stmt.setString(1, m.getM_id());
+			stmt.setString(2, m.getM_pw());
+			stmt.setString(3, m.getM_level());
+			stmt.setString(4, m.getM_name());
+			stmt.setString(5, m.getM_phone());
+			stmt.setString(6, m.getM_gender());
+			stmt.setString(7, m.getGenre_code());
+			stmt.setString(8, m.getM_email());
+			stmt.setInt(9, m.getM_point());
+			stmt.setString(10, m.getM_birth());
+			
+			System.out.println(stmt +" <-- stmt MemberDao.java");
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+		} finally{
+			try { 
+				conn.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+			try { 
+				stmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	// 회원 정보 수정
 	
 	public void updateMember(String m_name, String m_phone, String m_birth, String m_email, String m_id) throws ClassNotFoundException, SQLException, IOException {

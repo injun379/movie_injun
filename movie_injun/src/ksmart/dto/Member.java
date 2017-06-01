@@ -71,5 +71,11 @@ public class Member {
 	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;
 	}
+	@Override
+	public String toString() {
+		return "Member [m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name + ", m_level=" + m_level + ", m_phone="
+				+ m_phone + ", m_gender=" + m_gender + ", m_email=" + m_email + ", genre_code=" + genre_code
+				+ ", m_point=" + m_point + ", m_birth=" + m_birth + "]";
+	}
 	
 }
