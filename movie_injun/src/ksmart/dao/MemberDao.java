@@ -32,6 +32,8 @@ public class MemberDao {
 			stmt.setString(10, m.getM_birth());
 			
 			System.out.println(stmt +" <-- stmt MemberDao.java");
+			
+			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
 		} finally{
