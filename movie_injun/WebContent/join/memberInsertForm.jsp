@@ -20,6 +20,9 @@
 	function fn_press_han(obj){
 		obj.value = obj.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
 		}
+	function showPopup(){
+		window.open("idCheck.jsp", "아이디 중복 확인", "width=430, height=365, left=200, top=50");
+	}
 	$(document).ready(function(){
 		var dataCheck = false;
 		$('#m_id').blur(function(){
@@ -31,8 +34,8 @@
                 }
 			});
 		$('#m_pw').blur(function(){
-			if($(this).val().length < 8) {
-                $('#pwHelper').text('8자 이상의 영문 또는 숫자 조합으로  입력하세요.');
+			if($(this).val().length < 4) {
+                $('#pwHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
             } else {
         		$('#pwHelper').text('');
                 dataCheck = true;
@@ -143,8 +146,8 @@
 												<tr>
 													<th scope="row">아이디</th>
 													<td>
-														<input id="m_id" name="m_id" type="text" onblur="fn_press_han(this);">
-														<button id="id_check" type="button" class="set-btn round inred on">
+														<input id="m_id" name="m_id" type="text" onkeyup="fn_press_han(this);">
+														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup()" maxlength="10">
 														<span>중복 확인</span>
 														</button>
 														<span id="idHelper"></span>
@@ -153,14 +156,14 @@
 												<tr>
 													<th scope="row">비밀번호</th>
 													<td>
-														<input id="m_pw" name="m_pw" type="password" onblur="fn_press_han(this);">
+														<input id="m_pw" name="m_pw" type="password" onkeyup="fn_press_han(this);">
 														<span id="pwHelper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">비밀번호 확인</th>
 													<td>
-														<input id="m_pw2" name="m_pw2" type="password" onblur="fn_press_han(this);">
+														<input id="m_pw2" name="m_pw2" type="password" onkeyup="fn_press_han(this);">
 														<span id="pw2Helper"></span>
 													</td> 
 												</tr>
