@@ -18,7 +18,7 @@ public class MemberDao {
 		
 		try {
 			conn = driverdb.getConnection();
-			stmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?,?,?,?)");
+			stmt = conn.prepareStatement("insert into member(m_id, m_pw, m_level, m_name, m_phone, m_gender, m_email, m_point, genre_code, m_birth) values(?,?,?,?,?,?,?,?,?,?)");
 		
 			stmt.setString(1, m.getM_id());
 			stmt.setString(2, m.getM_pw());
@@ -26,13 +26,12 @@ public class MemberDao {
 			stmt.setString(4, m.getM_name());
 			stmt.setString(5, m.getM_phone());
 			stmt.setString(6, m.getM_gender());
-			stmt.setString(7, m.getGenre_code());
-			stmt.setString(8, m.getM_email());
-			stmt.setInt(9, m.getM_point());
+			stmt.setString(7, m.getM_email());
+			stmt.setInt(8, m.getM_point());
+			stmt.setString(9, m.getGenre_code());
 			stmt.setString(10, m.getM_birth());
 			
 			System.out.println(stmt +" <-- stmt MemberDao.java");
-			
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
@@ -62,6 +61,7 @@ public class MemberDao {
 		stmt.setString(3, m_birth);
 		stmt.setString(4, m_email);
 		stmt.setString(5, m_id);
+		System.out.println(stmt +" <-- stmt");
 		stmt.executeUpdate();
 	}
 	

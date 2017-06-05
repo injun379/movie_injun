@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import = "ksmart.dao.MemberDao" %>
 <%@ page import = "ksmart.dto.Member" %>
+<%@ page import = "java.sql.Date" %>
 <%
 request.setCharacterEncoding("utf-8");
 
@@ -31,7 +32,6 @@ System.out.println(m_gender + " <-- m_gender memberInsertPro.jsp");
 System.out.println(m_birth + " <-- m_birth memberInsertPro.jsp");
 System.out.println(genre_code + " <-- genre_code memberInsertPro.jsp");
 
-if(m_pw.equals(m_pw2)) {
 MemberDao memberdao = new MemberDao();
 Member m = new Member();
 
@@ -55,13 +55,3 @@ memberdao.insertMember(m);
 	alert("cgv 회원이 되신 걸 환영합니다.");
 	location.href = "<%= request.getContextPath()%>/login/loginForm.jsp";
 </script>
-<%
-} else {
-%>
-<script language="javascript">
-	alert("비밀번호가 일치하지 않습니다.");
-	location.href = "./memberInsertForm.jsp";
-</script>
-<%
-}
-%>

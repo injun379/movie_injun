@@ -16,6 +16,70 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CGV 회원가입</title>
+<script>
+	function fn_press_han(obj){
+		obj.value = obj.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
+		}
+	$(document).ready(function(){
+		var dataCheck = false;
+		$('#m_id').blur(function(){
+				if($(this).val().length < 4) {
+	                $('#idHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
+	            } else {
+            		$('#idHelper').text('');
+            		dataCheck = true;
+                }
+			});
+		$('#m_pw').blur(function(){
+			if($(this).val().length < 8) {
+                $('#pwHelper').text('8자 이상의 영문 또는 숫자 조합으로  입력하세요.');
+            } else {
+        		$('#pwHelper').text('');
+                dataCheck = true;
+            }
+			});
+		$('#m_pw2').blur(function(){
+			if($(this).val() != $('#m_pw').val()) {
+                $('#pw2Helper').text('입력한 비밀번호가 일치하지 않습니다.');
+            } else {
+        		$('#pw2Helper').text('');
+                dataCheck = true;
+            }
+			console.log(dataCheck);
+			});
+		$('#m_name').blur(function(){
+			if($(this).val().length < 2) {
+                $('#nameHelper').text('이름을  입력하세요.');
+            } else {
+        		$('#nameHelper').text('');
+                dataCheck = true;
+            }
+			console.log(dataCheck);
+		});
+		$('#m_phone').blur(function(){
+			if($(this).val().length < 8) {
+                $('#phoneHelper').text('전화번호를 입력하세요.');
+            } else {
+        		$('#phoneHelper').text('');
+                dataCheck = true;
+            }
+			console.log(dataCheck);
+		});
+		$('#m_email').blur(function(){
+			if($(this).val().length < 1) {
+                $('#emailHelper').text('이메일 계정을 입력하세요.');
+            } else {
+        		$('#emailHelper').text('');
+                dataCheck = true;
+            }
+			console.log(dataCheck);
+			if(dataCheck == false) {
+        		$('.link-join').attr('disabled',disabled);
+        		}
+		});
+		});
+	
+</script>
 </head>
 <body class="">
 	<div id="cgvwrap">
@@ -79,34 +143,39 @@
 												<tr>
 													<th scope="row">아이디</th>
 													<td>
-														<input id="m_id" name="m_id" type="text">
+														<input id="m_id" name="m_id" type="text" onblur="fn_press_han(this);">
 														<button id="id_check" type="button" class="set-btn round inred on">
 														<span>중복 확인</span>
 														</button>
+														<span id="idHelper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">비밀번호</th>
 													<td>
-														<input id="m_pw" name="m_pw" type="password">
+														<input id="m_pw" name="m_pw" type="password" onblur="fn_press_han(this);">
+														<span id="pwHelper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">비밀번호 확인</th>
 													<td>
-														<input id="m_pw2" name="m_pw2" type="password">
+														<input id="m_pw2" name="m_pw2" type="password" onblur="fn_press_han(this);">
+														<span id="pw2Helper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">이름</th>
 													<td>
 														<input id="m_name" name="m_name" type="text">
+														<span id="nameHelper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">휴대전화번호</th>
 													<td>
 														<input id="m_phone" name="m_phone" type="text">
+														<span id="phoneHelper"></span>
 													</td> 
 												</tr>
 												<tr>
@@ -120,6 +189,7 @@
 									                        <option value="nate.com">네이트</option>
 									                        <option value="gamil.com">구글</option>
 									                    </select>
+									                    <span id="emailHelper"></span>
 													</td>
 												</tr>
 												<tr>
@@ -159,10 +229,12 @@
 												<td>
 													<input type="radio" id="m_gender" name="m_gender" value="남">남
 													<input type="radio" id="m_gender" name="m_gender" value="여">여
+													<span id="genderHelper"></span>
 												</td>
 											</tr>			
 										</tbody>
 									</table>
+									<span id="m_dataCheck"></span>
 									<br> <button type="submit" class="link-join"><span>CGV 회원 가입</span></button>
 								</form>	
 							</div>
