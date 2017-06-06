@@ -11,6 +11,28 @@ public class MemberDao {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
+	// 아이디 중복 확인
+	
+	public String idDuplictationCheck(String input_id) throws ClassNotFoundException, SQLException, IOException {
+		String checkMsg = null;
+		DriverDB driverdb = new DriverDB();
+		
+		conn = driverdb.getConnection();
+		stmt = conn.prepareStatement("select m_id from member where m_id=?");
+		stmt.setString(1, input_id);
+		
+		System.out.println(stmt + " <-- stmt MemberDao.java");
+		rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			checkMsg = "NO";
+		} else {
+			checkMsg = "OK";
+		}
+		System.out.println(checkMsg +" <-- check_id MemberDao.java");
+		return checkMsg;
+	}
+	
 	// 회원 정보 입력
 	
 	public void insertMember(Member m) {

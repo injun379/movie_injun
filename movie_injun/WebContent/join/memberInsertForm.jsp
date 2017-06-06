@@ -21,7 +21,10 @@
 		obj.value = obj.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
 		}
 	function showPopup(){
-		window.open("idCheck.jsp", "아이디 중복 확인", "width=430, height=365, left=200, top=50");
+		window.open("idCheckPro.jsp?m_id="+$('#m_id').val(), "아이디 중복 확인", "width=430, height=365, left=200, top=50");
+	}
+	function showidCheckPro() {
+		location.href="idCheckPro.jsp?m_id="+$('#m_id').val();
 	}
 	$(document).ready(function(){
 		var dataCheck = false;
@@ -135,7 +138,7 @@
 							<p>※ CGV 회원이 되시면 회원 ID와 비밀번호로 CGV의 다양한 서비스를 이용하실 수 있습니다.</p>
 							<br><br>
 						    <div class="tbl-form">
-								<form action="./memberInsertPro.jsp" method="post">
+								<form name="memberInfo" action="./memberInsertPro.jsp" method="post">
 										<table summary="나의 CGV정보 선호장르,주중선호요일,선호시간대,자주가는 CGV, Special Day 표기">
 											<caption>나의 CGV정보</caption>
 											<colgroup>
@@ -146,8 +149,8 @@
 												<tr>
 													<th scope="row">아이디</th>
 													<td>
-														<input id="m_id" name="m_id" type="text" onkeyup="fn_press_han(this);">
-														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup()" maxlength="10">
+														<input id="m_id" name="m_id" type="text" onkeyup="fn_press_han(this);" maxlength="10">
+														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup();">
 														<span>중복 확인</span>
 														</button>
 														<span id="idHelper"></span>

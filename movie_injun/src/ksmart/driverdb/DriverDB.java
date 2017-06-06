@@ -22,10 +22,10 @@ public class DriverDB {
         this.user = pro.getProperty("user");
         this.password = pro.getProperty("password");
         this.driver = pro.getProperty("driver");
-        System.out.println("url = "+url);
+/*        System.out.println("url = "+url);
         System.out.println("user = "+user);
         System.out.println("password = "+password);
-        System.out.println("driver = "+driver);
+        System.out.println("driver = "+driver);*/
 	}
 
 	public Connection getConnection() throws SQLException, ClassNotFoundException, IOException{
