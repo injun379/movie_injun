@@ -6,7 +6,18 @@
 <%@ page import = "java.sql.Date" %>
 <%
 request.setCharacterEncoding("utf-8");
+String checkInfo = request.getParameter("checkInfo");
+System.out.println(checkInfo + " <-- checkInfo memberInsertPro.jsp");
 
+if(checkInfo.equals("NO")) {
+%>
+<script language="javascript">
+	alert("입력하지 않은 필수 입력 사항이 존재합니다.");
+	location.href = "./memberInsertForm.jsp";
+</script>
+<%	
+} else {
+	
 String m_level = "일반";
 int m_point = 0;
 
@@ -55,3 +66,6 @@ memberdao.insertMember(m);
 	alert("cgv 회원이 되신 걸 환영합니다.");
 	location.href = "<%= request.getContextPath()%>/login/loginForm.jsp";
 </script>
+<%
+}
+%>

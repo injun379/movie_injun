@@ -17,9 +17,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CGV 회원가입</title>
 <script>
-	function fn_press_han(obj){
-		obj.value = obj.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
-		}
 	function showPopup(){
 		window.open("idCheckPro.jsp?m_id="+$('#m_id').val(), "아이디 중복 확인", "width=430, height=365, left=200, top=50");
 	}
@@ -27,62 +24,95 @@
 		location.href="idCheckPro.jsp?m_id="+$('#m_id').val();
 	}
 	$(document).ready(function(){
-		var dataCheck = false;
+		
+		var dataCheck = [0,0,0,0,0,0];
+		console.log(dataCheck);
+		
+		$('#m_id').keyup(function(){
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣 | ~!@\#$%<>^&*\()\-=+_\’.,]/g, '');
+		});
+		$('#m_name').keyup(function(){
+			this.value = this.value.replace(/[0-9 | a-z | A-Z | ~!@\#$%<>^&*\()\-=+_\’.,]/g, '');
+		});
+		$('#m_phone').keyup(function(){
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣 | a-z | A-Z | ~!@\#$%<>^&*\()\=+_\.,’]/g, '');
+		});
 		$('#m_id').blur(function(){
-				if($(this).val().length < 4) {
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
+				if(($(this).val().length < 4)||($(this).val() = '') ) {
 	                $('#idHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
+	                dataCheck[0] = 0;
 	            } else {
             		$('#idHelper').text('');
-            		dataCheck = true;
+            		if($('#check_result').val() = 1) {
+            		dataCheck[0] = 1;
+            		} else {
+            		dataCheck[0] = 0;
+            		}
                 }
+				return dataCheck;
 			});
 		$('#m_pw').blur(function(){
 			if($(this).val().length < 4) {
                 $('#pwHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
+                dataCheck[1] = 0;
             } else {
         		$('#pwHelper').text('');
-                dataCheck = true;
-            }
+        		dataCheck[1] = 1;
+            }console.log(dataCheck);
+			return dataCheck;
 			});
 		$('#m_pw2').blur(function(){
 			if($(this).val() != $('#m_pw').val()) {
                 $('#pw2Helper').text('입력한 비밀번호가 일치하지 않습니다.');
+                dataCheck[2] = 0;
             } else {
         		$('#pw2Helper').text('');
-                dataCheck = true;
+        		dataCheck[2] = 1;
             }
 			console.log(dataCheck);
+			return dataCheck;
 			});
 		$('#m_name').blur(function(){
 			if($(this).val().length < 2) {
                 $('#nameHelper').text('이름을  입력하세요.');
+                dataCheck[3] = 0;
             } else {
         		$('#nameHelper').text('');
-                dataCheck = true;
+        		dataCheck[3] = 1;
             }
 			console.log(dataCheck);
+			return dataCheck;
 		});
 		$('#m_phone').blur(function(){
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
 			if($(this).val().length < 8) {
                 $('#phoneHelper').text('전화번호를 입력하세요.');
+                dataCheck[4] = 0;
             } else {
         		$('#phoneHelper').text('');
-                dataCheck = true;
+        		dataCheck[4] = 1;
             }
 			console.log(dataCheck);
+			return dataCheck;
 		});
 		$('#m_email').blur(function(){
 			if($(this).val().length < 1) {
                 $('#emailHelper').text('이메일 계정을 입력하세요.');
+                dataCheck[5] = 0;
             } else {
         		$('#emailHelper').text('');
-                dataCheck = true;
+        		dataCheck[5] = 1;
             }
 			console.log(dataCheck);
-			if(dataCheck == false) {
-        		$('.link-join').attr('disabled',disabled);
-        		}
+			return dataCheck;
 		});
+		
+		if(dataCheck = [1,1,1,1,1,1]) {
+			$('#checkInfo').val('OK');
+		} else {
+			$('#checkInfo').val('NO');
+		} 
 		});
 	
 </script>
@@ -149,8 +179,9 @@
 												<tr>
 													<th scope="row">아이디</th>
 													<td>
-														<input id="m_id" name="m_id" type="text" onkeyup="fn_press_han(this);" maxlength="10">
-														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup();">
+														<input id="m_id" name="m_id" type="text" maxlength="10">
+														<input id="check_result" type="hidden">
+														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup();">														
 														<span>중복 확인</span>
 														</button>
 														<span id="idHelper"></span>
@@ -159,14 +190,14 @@
 												<tr>
 													<th scope="row">비밀번호</th>
 													<td>
-														<input id="m_pw" name="m_pw" type="password" onkeyup="fn_press_han(this);">
+														<input id="m_pw" name="m_pw" type="password">
 														<span id="pwHelper"></span>
 													</td> 
 												</tr>
 												<tr>
 													<th scope="row">비밀번호 확인</th>
 													<td>
-														<input id="m_pw2" name="m_pw2" type="password" onkeyup="fn_press_han(this);">
+														<input id="m_pw2" name="m_pw2" type="password">
 														<span id="pw2Helper"></span>
 													</td> 
 												</tr>
@@ -180,7 +211,7 @@
 												<tr>
 													<th scope="row">휴대전화번호</th>
 													<td>
-														<input id="m_phone" name="m_phone" type="text">
+														<input id="m_phone" name="m_phone" type="text" maxlength="13">
 														<span id="phoneHelper"></span>
 													</td> 
 												</tr>
@@ -241,7 +272,8 @@
 										</tbody>
 									</table>
 									<span id="m_dataCheck"></span>
-									<br> <button type="submit" class="link-join"><span>CGV 회원 가입</span></button>
+									<input type="hidden" id="checkInfo" name="checkInfo">
+									<br> <button type="submit" class="link-join" id="sub_pro"><span>CGV 회원 가입</span></button>
 								</form>	
 							</div>
 						</div>

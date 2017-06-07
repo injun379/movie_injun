@@ -7,9 +7,7 @@
 MemberDao mdao = new MemberDao();
 String input_id = request.getParameter("m_id");
 System.out.println(input_id + " <-- input_id idCheckPro.jsp");
-String checkMsg = mdao.idDuplictationCheck(input_id);
+int checkRe = mdao.idDuplictationCheck(input_id);
 
-checkMsg = URLEncoder.encode(checkMsg, "utf-8");
-
-pageContext.forward("./idCheck.jsp?input_id="+input_id+"&checkMsg="+checkMsg);
+pageContext.forward("./idCheck.jsp?input_id="+input_id+"&checkRe="+checkRe);
 %>

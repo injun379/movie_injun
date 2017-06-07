@@ -17,13 +17,13 @@
 <title>영화 그 이상의 감동, CGV</title>
 <%@ page import = "java.net.*" %>
 <%
-String checkResult = request.getParameter("checkMsg");
+int checkResult = Integer.parseInt(request.getParameter("checkRe"));
 String checkID = request.getParameter("input_id");
 System.out.println(checkID+" <-- checkID idCheck.jsp");
 System.out.println(checkResult+" <-- checkResult idCheck.jsp");
 String checkMsg = "중복 확인을 클릭하세요.";
 
-if(checkResult.equals("NO")) {
+if(checkResult == 0) {
 	checkMsg = "이미 사용 중인 아이디입니다.";
 } else {
 	checkMsg = "사용 가능한 아이디입니다.";
@@ -33,9 +33,6 @@ if(checkResult.equals("NO")) {
 	function showidCheckPro() {
 		location.href="idCheckPro.jsp?m_id="+$('#id_check').val();
 	}
-	function fn_press_han(obj){
-		obj.value = obj.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
-		}
 	function moveClose() {
 		  opener.location.href="memberInsertForm.jsp";
 		  self.close();
@@ -45,6 +42,7 @@ if(checkResult.equals("NO")) {
         //opener.document.memberInfo.idDuplication.value ="idCheck";
         // 회원가입 화면의 ID입력란에 값을 전달
         opener.document.memberInfo.m_id.value = document.getElementById("id_check").value;
+        opener.document.memberInfo.check_result.value = document.getElementById("checkResult").value;
         
         if (opener != null) {
             opener.chkForm = null;
@@ -52,12 +50,12 @@ if(checkResult.equals("NO")) {
         }    
     } 
 	$(document).ready(function(){
-		var checkRe = "";
-		checkRe = "<%= checkResult %>";
-		console.log(checkRe);
-		if(checkRe = 'NO') {
-			$('#id_check').val('');
-		} 
+		$('#id_check').keyup(function(){
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣 | ~!@\#$%<>^&*\()\-=+_\’]/g, '');
+		});
+		$('#id_check').blur(function(){
+			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
+			});
 	});
 </script>
 
@@ -80,7 +78,8 @@ if(checkResult.equals("NO")) {
                             <p>영문, 숫자 혼용 가능(10자 이내)</p>
                             <p>
                                 <label>아이디 입력</label>
-                                <input type="text" id="id_check" name="m_id" onkeyup="fn_press_han(this);" maxlength="10" class="s-medium" value="<%= checkID %>"/>
+                                <input type="text" id="id_check" name="m_id" maxlength="10" class="s-medium" value="<%= checkID %>"/>
+                                <input type="hidden" id="checkResult" value="<%= checkResult %>">
                             </p>
                         </dd>
                     </dl>

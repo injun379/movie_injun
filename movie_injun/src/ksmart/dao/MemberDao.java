@@ -13,8 +13,8 @@ public class MemberDao {
 	
 	// 아이디 중복 확인
 	
-	public String idDuplictationCheck(String input_id) throws ClassNotFoundException, SQLException, IOException {
-		String checkMsg = null;
+	public int idDuplictationCheck(String input_id) throws ClassNotFoundException, SQLException, IOException {
+		int result = 0;
 		DriverDB driverdb = new DriverDB();
 		
 		conn = driverdb.getConnection();
@@ -25,12 +25,12 @@ public class MemberDao {
 		rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			checkMsg = "NO";
+			result = 0;
 		} else {
-			checkMsg = "OK";
+			result = 1;
 		}
-		System.out.println(checkMsg +" <-- check_id MemberDao.java");
-		return checkMsg;
+		System.out.println(result +" <-- result MemberDao.java");
+		return result;
 	}
 	
 	// 회원 정보 입력
