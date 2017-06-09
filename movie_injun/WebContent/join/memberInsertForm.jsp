@@ -17,6 +17,41 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CGV 회원가입</title>
 <script>
+function checkValue()
+{
+	var form = document.memberInfo;
+
+	if(!form.m_id.value){
+		alert("아이디를 입력하세요.");
+		return false;
+	}
+	
+	if(form.check_id.value != "idCheck"){
+		alert("아이디 중복체크를 해주세요.");
+		return false;
+	}
+	
+	if(!form.m_pw.value){
+		alert("비밀번호를 입력하세요.");
+		return false;
+	}
+	
+	if(!form.m_name.value){
+		alert("이름을 입력하세요.");
+		return false;
+	}
+	
+	if(!form.m_email.value){
+		alert("메일 주소를 입력하세요.");
+		return false;
+	}
+	
+	if(!form.m_phone.value){
+		alert("전화번호를 입력하세요.");
+		return false;
+	}
+	
+}
 	function showPopup(){
 		window.open("idCheckPro.jsp?m_id="+$('#m_id').val(), "아이디 중복 확인", "width=430, height=365, left=200, top=50");
 	}
@@ -24,9 +59,7 @@
 		location.href="idCheckPro.jsp?m_id="+$('#m_id').val();
 	}
 	$(document).ready(function(){
-		
-		var dataCheck = [0,0,0,0,0,0];
-		console.log(dataCheck);
+
 		
 		$('#m_id').keyup(function(){
 			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣 | ~!@\#$%<>^&*\()\-=+_\’.,]/g, '');
@@ -39,80 +72,37 @@
 		});
 		$('#m_id').blur(function(){
 			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
-				if(($(this).val().length < 4)||($(this).val() = '') ) {
+				if(($(this).val().length < 4) ) {
 	                $('#idHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
-	                dataCheck[0] = 0;
-	            } else {
-            		$('#idHelper').text('');
-            		if($('#check_result').val() = 1) {
-            		dataCheck[0] = 1;
-            		} else {
-            		dataCheck[0] = 0;
-            		}
-                }
-				return dataCheck;
+	            } 
 			});
 		$('#m_pw').blur(function(){
 			if($(this).val().length < 4) {
                 $('#pwHelper').text('4자 이상의 영문 또는 숫자 조합으로  입력하세요.');
-                dataCheck[1] = 0;
-            } else {
-        		$('#pwHelper').text('');
-        		dataCheck[1] = 1;
-            }console.log(dataCheck);
-			return dataCheck;
+            }
 			});
 		$('#m_pw2').blur(function(){
 			if($(this).val() != $('#m_pw').val()) {
                 $('#pw2Helper').text('입력한 비밀번호가 일치하지 않습니다.');
-                dataCheck[2] = 0;
-            } else {
-        		$('#pw2Helper').text('');
-        		dataCheck[2] = 1;
-            }
-			console.log(dataCheck);
-			return dataCheck;
+            } 
 			});
 		$('#m_name').blur(function(){
 			if($(this).val().length < 2) {
                 $('#nameHelper').text('이름을  입력하세요.');
-                dataCheck[3] = 0;
-            } else {
-        		$('#nameHelper').text('');
-        		dataCheck[3] = 1;
-            }
-			console.log(dataCheck);
-			return dataCheck;
+            } 
 		});
 		$('#m_phone').blur(function(){
 			this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
 			if($(this).val().length < 8) {
                 $('#phoneHelper').text('전화번호를 입력하세요.');
-                dataCheck[4] = 0;
-            } else {
-        		$('#phoneHelper').text('');
-        		dataCheck[4] = 1;
-            }
-			console.log(dataCheck);
-			return dataCheck;
+            } 
 		});
 		$('#m_email').blur(function(){
 			if($(this).val().length < 1) {
                 $('#emailHelper').text('이메일 계정을 입력하세요.');
-                dataCheck[5] = 0;
-            } else {
-        		$('#emailHelper').text('');
-        		dataCheck[5] = 1;
-            }
-			console.log(dataCheck);
-			return dataCheck;
+            } 
 		});
 		
-		if(dataCheck = [1,1,1,1,1,1]) {
-			$('#checkInfo').val('OK');
-		} else {
-			$('#checkInfo').val('NO');
-		} 
 		});
 	
 </script>
@@ -168,7 +158,7 @@
 							<p>※ CGV 회원이 되시면 회원 ID와 비밀번호로 CGV의 다양한 서비스를 이용하실 수 있습니다.</p>
 							<br><br>
 						    <div class="tbl-form">
-								<form name="memberInfo" action="./memberInsertPro.jsp" method="post">
+								<form name="memberInfo" action="./memberInsertPro.jsp" method="post" onsubmit="return checkValue()">
 										<table summary="나의 CGV정보 선호장르,주중선호요일,선호시간대,자주가는 CGV, Special Day 표기">
 											<caption>나의 CGV정보</caption>
 											<colgroup>
@@ -180,7 +170,7 @@
 													<th scope="row">아이디</th>
 													<td>
 														<input id="m_id" name="m_id" type="text" maxlength="10">
-														<input id="check_result" type="hidden">
+														<input id="check_id" type="hidden" value="idUncheck">
 														<button id="id_check" type="button" class="set-btn round inred on" onclick="showPopup();">														
 														<span>중복 확인</span>
 														</button>
