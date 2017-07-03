@@ -1,0 +1,42 @@
+@CHARSET "utf-8";
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none; 
+  }
+}
+
+.p-xxs{padding: 10px !important;}
+.p-xs{padding: 15px !important;}
+.p-sm{padding: 20px !important;}
+.p-md{padding: 30px !important;}
+.p-lg{padding: 40px !important;}
+
+.m-xxs{margin: 10px !important;}
+.m-xs{margin: 15px !important;}
+.m-sm{margin: 20px !important;}
+.m-md{margin: 30px !important;}
+.m-lg{margin: 40px !important;}
+
+.no-padding{padding: 0 !important;}
+.no-margin{margin: 0 !important;}
+
+.b-t{border-top: 1px solid #eeeeee;}
+.b-r{border-right: 1px solid #eeeeee;}
+.b-l{border-left: 1px solid #eeeeee;}
+.b-b{border-bottom: 1px solid #eeeeee;}
+
+.b-d-t{border-top: 1px dotted #eeeeee;}
+.b-d-r{border-right: 1px dotted #eeeeee;}
+.b-d-l{border-left: 1px dotted #eeeeee;}
+.b-d-b{border-bottom: 1px dotted #eeeeee;}
