@@ -15,7 +15,7 @@ public class MemberInsertProAction implements MemberActionInterFace {
 	public MemberActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("05_01_execute_MInsertProAction.java ");
 		// 01단계 : 화면에서 입력한 값들을 받아서 확인한다.
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		
 		String checkInfo = request.getParameter("checkInfo");
 		System.out.println(checkInfo + " <-- checkInfo memberInsertPro.jsp");
