@@ -68,16 +68,17 @@
 			return false;
 		}
 	}
-	function showPopup(){
-		window.open("./join/idCheck.jsp", "아이디 중복 확인", "width=430, height=365, left=200, top=50");
-	}
-	function showidCheckPro() {
-		location.href="./join/idCheck.jsp";
-	}
 	$(document).ready(function(){
-
-
-			
+		$('#memberIdSearch').click(function(){
+			var in_id = $('#m_id').val();
+			$.ajax({
+				type : "post",
+				url : "./join/id_check.movie",
+				data : {id : in_id},
+				success : function(ic){$('#idch').html(ic)},
+				error : function error(){alert('시스템 문제 발생');}
+			});
+		});
 		$('#m_id').keyup(function(){
 		//	this.value = this.value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣 | ~!@\#$%<>^&*\()\-=+_\’.,]/g, '');
 			var id = this.value;
@@ -188,8 +189,10 @@
 						</label>
 						<div class="form-gorup">
 							<input type="text" class="form-control" id="m_id" name="m_id" placeholder="아이디">
+							<span id="idch"></span>
 							<input type="button" class="btn btn-primary" id="memberIdSearch" value="중복확인" data-toggle="modal" data-target="#myModal2">
 						</div> 
+						
 						<div class="row p-xxs"></div>
 						
 					  	<label class="col-sm-2 control-label" for="m_pw">
@@ -314,7 +317,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -331,19 +334,14 @@
       		아이디조회
       		</button>
       	</div>
-      		<div class="alert alert-success" style="display: none;" id="alertSuccess">
-      			사용가능합니다.
-      		</div>
-      		<div class="alert alert-danger" style="display: none;" id="alertDanger">
-      			사용할수 없는 아이디입니다.
-      		</div>
+      		<span id="idch"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="closeBtn" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 			<!-- 실컨텐츠 끝 --> 
 <%@ include file="/module/bottom.jsp"%>
 <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
@@ -364,6 +362,7 @@ $('.input-group.date').datepicker({
 		$('#alertDanger').hide();
 		 //alert('호출되었습니다.');
 	});
+	
 	$('#myModal2').on('hidden.bs.modal', function () {
 		console.log(check);
 		if(check) {
@@ -372,20 +371,6 @@ $('.input-group.date').datepicker({
 			$('#m_id').val('');
 		}
 		// alert('닫기');
-	});
-	$('#memberIdSearchBtn').click(function () {
-		var checkId = "id001";
-		if($('#memberSearchId').val() == checkId ) {
-			$('#alertSuccess').hide();
-			$('#alertDanger').show();
-			check = false;
-			return check;
-		} else {
-			$('#alertDanger').hide();
-			$('#alertSuccess').show();
-			check = true;
-			return check;
-		}
 	});
 	
     $('#memberPostBtn').click(function sample6_execDaumPostcode() {

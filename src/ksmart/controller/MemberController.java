@@ -22,7 +22,7 @@ public class MemberController extends HttpServlet {
     }
 
     protected void memberProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       	System.out.println("03 mProcess È£Ãâ MenberController.java");
+       	System.out.println("03 mProcess È£ï¿½ï¿½ MenberController.java");
 		String RequestURI=request.getRequestURI();
 		String contextPath=request.getContextPath();
 		String command=RequestURI.substring(contextPath.length());
@@ -86,6 +86,14 @@ public class MemberController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/join/id_check.movie")) {
+			System.out.println("04_05_/join/id_check.movie");
+			MemberIdCheckProAction ci = new MemberIdCheckProAction();
+			try{
+				ci.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 		if(forward != null){
@@ -93,7 +101,7 @@ public class MemberController extends HttpServlet {
                 response.sendRedirect(forward.getPath());
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-                System.out.println(forward.getPath() + "<--- forward.getPath()[jsp ÀÌµ¿°æ·Î] MemberFrontController.java");
+                System.out.println(forward.getPath() + "<--- forward.getPath()[jsp ï¿½Ìµï¿½ï¿½ï¿½ï¿½] MemberFrontController.java");
                 System.out.println();
                 dispatcher.forward(request, response);
             }

@@ -1,5 +1,7 @@
 package ksmart.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,36 +9,34 @@ import ksmart.dao.MemberDao;
 import ksmart.forward.MemberActionForward;
 import ksmart.inter.MemberActionInterFace;
 
-public class MemberIdCheckProAction implements MemberActionInterFace {
+public class MemberIdCheckProAction {
 
-	@Override
-	public MemberActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("05_02_execute_MemberIdCheckProAction.java ");
-		request.setCharacterEncoding("euc-kr");
-		// 01´Ü°è : È­¸é¿¡¼­ ÀÔ·ÂÇÑ °ªµéÀ» ¹Ş¾Æ¼­ È®ÀÎÇÑ´Ù.
-		String input_id = request.getParameter("m_id");
+		response.setCharacterEncoding("utf-8");
+		
+		String input_id = request.getParameter("id");
 		System.out.println(input_id + " <-- input_id MemberIdCheckProAction.java");
 		String checkRe = "";
+		
+		response.setContentType("text/html; charset-UTF-8");
+		PrintWriter out = response.getWriter();
 
-		// 02´Ü°è	: DAO³» insert¸Ş¼­µå È£Ãâ½Ã Vo°´Ã¼ ÁÖ¼Ò°ª ÀÔ·Â(¸®ÅÏ ¼±ÅÃ)
 		MemberDao mdao = new MemberDao();
 		if(input_id.equals("") || (input_id == null)) {
 			checkRe = "EMPTY";
 		} else {
 			checkRe = mdao.idDuplictationCheck(input_id);
+			if(checkRe.equals("OK")) {
+				out.print("<div class='alert alert-success' id='alertSuccess'>");
+      			out.print("ì‚¬ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+      			out.print("</div>");
+			} else {
+				out.print("<div class='alert alert-danger' id='alertDanger'>");
+      			out.print("ì‚¬ìš©í• ìˆ˜ ì—†ëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.");
+      			out.print("</div>");
+			}
 		}
-		
-		// 03´Ü°è : ¸®ÅÏ¹ŞÀº °ªÀ» request¿¡ ¼ÂÆÃ
-		request.setAttribute("checkRe", checkRe);
-		request.setAttribute("input_id", input_id);
-		
-		// 04´Ü°è : MActionForward °´Ã¼³» ¼ÂÆÃ(true ¶Ç´Â False°ª°ú °æ·Î)
-		MemberActionForward forward = new MemberActionForward();
-		forward.setRedirect(false);
-		forward.setPath("/join/idCheck_form.movie");
-		
-		// 05´Ü°è : ¸Ş¼­µå È£ÃâÇÑ °÷À¸·Î ÁÖ¼Ò°ª ¸®ÅÏ
-		return forward;
 	}
 
 }
