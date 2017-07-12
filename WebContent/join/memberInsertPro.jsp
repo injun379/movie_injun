@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ page import = "ksmart.dao.MemberDao" %>
 <%@ page import = "ksmart.dto.Member" %>
 <%@ page import = "java.sql.Date" %>
@@ -12,7 +12,7 @@ System.out.println(checkInfo + " <-- checkInfo memberInsertPro.jsp");
 
 if(checkInfo.equals("NO")) {
 %>
-<script language="javascript">
+<script>
 	alert("입력하지 않은 필수 입력 사항이 존재합니다.");
 	location.href = "./memberInsertForm.jsp";
 </script>
@@ -67,7 +67,7 @@ System.out.println(m +" <-- m memberInsertPro.jsp");
 memberdao.insertMember(m);
 
 %>
-<script language="javascript">
+<script>
 	alert("cgv 회원이 되신 걸 환영합니다.");
 	location.href = "<%= request.getContextPath()%>/login/loginForm.jsp";
 </script>

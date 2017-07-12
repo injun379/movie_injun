@@ -69,8 +69,8 @@
 		}
 	}
 	$(document).ready(function(){
-		$('#memberIdSearch').click(function(){
-			var in_id = $('#m_id').val();
+		$('#memberIdSearchBtn').click(function(){
+			var in_id = $('#memberSearchId').val();
 			$.ajax({
 				type : "post",
 				url : "./join/id_check.movie",
@@ -189,7 +189,7 @@
 						</label>
 						<div class="form-gorup">
 							<input type="text" class="form-control" id="m_id" name="m_id" placeholder="아이디">
-							<span id="idch"></span>
+							
 							<input type="button" class="btn btn-primary" id="memberIdSearch" value="중복확인" data-toggle="modal" data-target="#myModal2">
 						</div> 
 						
@@ -317,7 +317,7 @@
 
 
 <!-- Modal -->
-<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -330,6 +330,7 @@
       	<div class="form-inline form-group">
       			회원 아이디 : 
       		<input type="text" id="memberSearchId" class="form-control">
+      		<input type="hidden" id="check">
       		<button type="button" id="memberIdSearchBtn" class="btn btn-primary">
       		아이디조회
       		</button>
@@ -341,7 +342,7 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 			<!-- 실컨텐츠 끝 --> 
 <%@ include file="/module/bottom.jsp"%>
 <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
@@ -355,7 +356,7 @@ $('.input-group.date').datepicker({
 	autoclose : true,
 	language : 'ko'
 });
-	var check = false;
+	var check = $('#check').val();
 	$('#myModal2').on('shown.bs.modal', function () {
 		$('#memberSearchId').val($('#m_id').val());
 		$('#alertSuccess').hide();
@@ -365,7 +366,7 @@ $('.input-group.date').datepicker({
 	
 	$('#myModal2').on('hidden.bs.modal', function () {
 		console.log(check);
-		if(check) {
+		if(check == 'OK') {
 			$('#m_id').val($('#memberSearchId').val());
 		} else {
 			$('#m_id').val('');

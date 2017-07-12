@@ -22,7 +22,7 @@ public class MemberController extends HttpServlet {
     }
 
     protected void memberProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       	System.out.println("03 mProcess ȣ�� MenberController.java");
+       	System.out.println("03 mProcess 호출  MenberController.java");
 		String RequestURI=request.getRequestURI();
 		String contextPath=request.getContextPath();
 		String command=RequestURI.substring(contextPath.length());

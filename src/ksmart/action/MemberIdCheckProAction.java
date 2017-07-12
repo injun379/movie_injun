@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ksmart.dao.MemberDao;
-import ksmart.forward.MemberActionForward;
-import ksmart.inter.MemberActionInterFace;
 
 public class MemberIdCheckProAction {
 
@@ -30,10 +28,16 @@ public class MemberIdCheckProAction {
 			if(checkRe.equals("OK")) {
 				out.print("<div class='alert alert-success' id='alertSuccess'>");
       			out.print("사용가능합니다.");
+      			out.print("<script>");
+      			out.print("$('#check').val() = 'OK';");
+      			out.print("</script>");
       			out.print("</div>");
 			} else {
 				out.print("<div class='alert alert-danger' id='alertDanger'>");
       			out.print("사용할수 없는 아이디입니다.");
+      			out.print("<script>");
+      			out.print("$('#check').val() = 'NO';");
+      			out.print("</script>");
       			out.print("</div>");
 			}
 		}

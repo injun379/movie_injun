@@ -5,8 +5,48 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/search-icon.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	var s = $('.search_icon'),
+	f  = $('.search_form'),
+	a = $('.after'),
+	    m = $('h4');
+
+	s.focus(function(){
+	if( f.hasClass('open') ) return;
+	f.addClass('in');
+	setTimeout(function(){
+	f.addClass('open');
+	f.removeClass('in');
+	}, 1300);
+	});
+
+	a.on('click', function(e){
+	e.preventDefault();
+	if( !f.hasClass('open') ) return;
+	s.val('');
+	f.addClass('close');
+	f.removeClass('open');
+	setTimeout(function(){
+	f.removeClass('close');
+	}, 1300);
+	})
+
+	f.submit(function(e){
+	e.preventDefault();
+	m.html('Thanks, high five!').addClass('show');
+	f.addClass('explode');
+	setTimeout(function(){
+	s.val('');
+	f.removeClass('explode');
+	m.removeClass('show');
+	}, 3000);
+	})
+})
+</script>
 </head>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -51,10 +91,12 @@
 		<li><a href="#">이벤트&amp;컬쳐</a>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li style="color:gray;">통합검색   
-			<input type="text" title="통합검색" id="header_keyword" name="header_keyword" maxlength="20" /> 
-			<input type="hidden" id="header_ad_keyword" name="header_ad_keyword" />
-			<button class="btn-link" type="button" id="btn_header_search">검색</button>
+      	<li style="color:gray;">
+			<form class="search_form">
+			  <input class="search_icon" type="text" />
+			  <div class="after"></div>
+			  <input class="search_icon" type="submit" />
+			</form>
 		</li>
       </ul>
     </div>
@@ -71,7 +113,7 @@
         </h4>
       </div>
       <div class="modal-body">
-      	<form method="post" action="<%=request.getContextPath() %>/login/login_pro.movie">
+      	<form method="post" action="${pageContext.request.contextPath}/login/login_pro.movie">
       		<div class="input-group">
       			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       			<input type="text" name="login_id" class="form-control">

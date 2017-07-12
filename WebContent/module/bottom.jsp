@@ -21,10 +21,10 @@
 	</div>
 	<address>전라북도 전주시 덕진구 한국스마트 정보교육원</address>
 	<p>
-		<span>대표이사 : 황인준</span>
+		<span>대표이사 : 대표이사</span>
 	</p>
 	<p>
-		<span>개인정보보호 책임자 : 마케팅 담당 황인준</span>
+		<span>개인정보보호 책임자 : 마케팅 담당</span>
 		<span>대표이메일 : acddde9@naver.com</span>
 	</p>
 	<p>&copy; 2017 All Rights Reserved</p>
