@@ -1,8 +1,8 @@
 package ksmart.forward;
 
 public class MemberActionForward {
-	private boolean isRedirect=false;	//false(Æ÷¿öµå)¿Í  true(¸®´ÙÀÌ·ºÆ®) ±¸ºĞ
-	private String path=null;			//°æ·Î
+	private boolean isRedirect=false;	//false(í¬ì›Œë“œ)ì™€  true(ë¦¬ë‹¤ì´ë ‰íŠ¸) êµ¬ë¶„
+	private String path=null;			//ê²½ë¡œ
 	public boolean isRedirect() {
 		return isRedirect;
 	}

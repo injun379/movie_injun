@@ -14,7 +14,7 @@ public class MemberInsertProAction implements MemberActionInterFace {
 	@Override
 	public MemberActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("05_01_execute_MInsertProAction.java ");
-		// 01´Ü°è : È­¸é¿¡¼­ ÀÔ·ÂÇÑ °ªµéÀ» ¹Ş¾Æ¼­ È®ÀÎÇÑ´Ù.
+		// 01ë‹¨ê³„ : í™”ë©´ì—ì„œ ì…ë ¥í•œ ê°’ë“¤ì„ ë°›ì•„ì„œ í™•ì¸í•œë‹¤.
 		request.setCharacterEncoding("utf-8");
 		
 		String checkInfo = request.getParameter("checkInfo");
@@ -22,7 +22,7 @@ public class MemberInsertProAction implements MemberActionInterFace {
 
 		HttpSession session = request.getSession();
 		String S_LEVEL = (String)session.getAttribute("S_LEVEL");
-		String m_level = "ÀÏ¹İ";
+		String m_level = "ì¼ë°˜";
 
 		if(S_LEVEL != null) {
 			m_level = request.getParameter("m_level");
@@ -51,7 +51,7 @@ public class MemberInsertProAction implements MemberActionInterFace {
 		System.out.println(m_birth + " <-- m_birth memberInsertPro.jsp");
 		System.out.println(genre_code + " <-- genre_code memberInsertPro.jsp");
 		
-		// 02´Ü°è : Vo ¶Ç´Â DTO°´Ã¼¿¡ ¼ÂÆÃ(¼±ÅÃ)
+		// 02ë‹¨ê³„ : Vo ë˜ëŠ” DTOê°ì²´ì— ì…‹íŒ…(ì„ íƒ)
 		Member m = new Member();
 		m.setM_id(m_id);
 		m.setM_pw(m_pw);
@@ -64,16 +64,16 @@ public class MemberInsertProAction implements MemberActionInterFace {
 		m.setM_gender(m_gender);
 		m.setM_phone(m_phone);
 		
-		// 03´Ü°è	: DAO³» insert¸Ş¼­µå È£Ãâ½Ã Vo°´Ã¼ ÁÖ¼Ò°ª ÀÔ·Â(¸®ÅÏ ¼±ÅÃ)
+		// 03ë‹¨ê³„	: DAOë‚´ insertë©”ì„œë“œ í˜¸ì¶œì‹œ Voê°ì²´ ì£¼ì†Œê°’ ì…ë ¥(ë¦¬í„´ ì„ íƒ)
 		MemberDao dao = new MemberDao();
 		dao.insertMember(m);
 		
-		// 04´Ü°è : MActionForward °´Ã¼³» ¼ÂÆÃ(true ¶Ç´Â False°ª°ú °æ·Î)
+		// 04ë‹¨ê³„ : MActionForward ê°ì²´ë‚´ ì…‹íŒ…(true ë˜ëŠ” Falseê°’ê³¼ ê²½ë¡œ)
 		MemberActionForward forward = new MemberActionForward();
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/index.movie");
 		
-		// 05´Ü°è : ¸Ş¼­µå È£ÃâÇÑ °÷À¸·Î ÁÖ¼Ò°ª ¸®ÅÏ
+		// 05ë‹¨ê³„ : ë©”ì„œë“œ í˜¸ì¶œí•œ ê³³ìœ¼ë¡œ ì£¼ì†Œê°’ ë¦¬í„´
 		return forward;
 	}
 

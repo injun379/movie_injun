@@ -11,7 +11,7 @@ public class MemberDao {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	// ¾ÆÀÌµğ Áßº¹ È®ÀÎ
+	// ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 	
 	public String idDuplictationCheck(String input_id) throws ClassNotFoundException, SQLException, IOException {
 		String result = "";
@@ -34,7 +34,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	// È¸¿ø Á¤º¸ ÀÔ·Â
+	// íšŒì› ì •ë³´ ì…ë ¥
 	
 	public void insertMember(Member m) {
 		DriverDB driverdb = new DriverDB();
@@ -72,7 +72,7 @@ public class MemberDao {
 		}
 	}
 	
-	// È¸¿ø Á¤º¸ ¼öÁ¤
+	// íšŒì› ì •ë³´ ìˆ˜ì •
 	
 	public void updateMember(String m_name, String m_phone, String m_birth, String m_email, String m_id) throws ClassNotFoundException, SQLException, IOException {
 		DriverDB driverdb = new DriverDB();
@@ -88,7 +88,7 @@ public class MemberDao {
 		stmt.executeUpdate();
 	}
 	
-	// ÇÑ¸íÀÇ È¸¿ø Á¤º¸ Á¶È¸ÇÏ¿© member°´Ã¼¿¡ ÀúÀå
+	// í•œëª…ì˜ íšŒì› ì •ë³´ ì¡°íšŒí•˜ì—¬ memberê°ì²´ì— ì €ì¥
 	
 	public Member searchOneMember(String m_id) throws ClassNotFoundException, SQLException, IOException {
 		Member m = new Member();
@@ -116,7 +116,7 @@ public class MemberDao {
 		return m;
 	}
 	
-	// ·Î±×ÀÎ Ã³¸® ¸Ş¼­µå
+	// ë¡œê·¸ì¸ ì²˜ë¦¬ ë©”ì„œë“œ
 	public String memberLogin(String m_id, String m_pw) throws ClassNotFoundException, SQLException, IOException{
 
 		String login = null;
@@ -129,13 +129,13 @@ public class MemberDao {
 		rs = stmt.executeQuery();
 		if(rs.next()){
 			if(rs.getString("m_pw").equals(m_pw)) {
-				login = "·Î±×ÀÎ ¼º°ø";
+				login = "ë¡œê·¸ì¸ ì„±ê³µ";
 			} else {
-				login = "ÀÏÄ¡ÇÏÁö ¾Ê´Â ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù.";
+				login = "ì¼ì¹˜í•˜ì§€ ì•ŠëŠ” ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.";
 			}
 			
 		} else {
-			login = "Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.";
+			login = "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.";
 		}
 		return login;
 	}

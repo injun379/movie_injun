@@ -29,43 +29,29 @@
 		</div>
 		<div>
 			<div>
-				<h3>MY COUPON</h3>
+				<h3>POINT</h3>
 				<ul>
-					<li><strong>CGV VIP에 도전하세요!</strong> <span><a href="#"><i>CGV VIP 혜택보기</i></a></span></li>
-					<li><strong>CGV 할인쿠폰</strong> <span><em>0</em> 개</span></li>
-					<li><strong>영화관람권</strong> <span><em>0</em> 개</span></li>
+					<li><strong>사용가능 포인트</strong> <span><em>${S_POINT}</em> 점</span></li>
+					<li><strong>VIP선정 포인트</strong><a href="#">
+					<img alt="i" /></a>
+					<span><em>700</em> 점</span></li>
 				</ul>
 			</div>
 			<div>
-				<h3>CJ ONE POINT</h3>
-				<a href="#">CJ ONE POINT 더보기</a>
-				<ul>
-					<li><strong>CJ ONE 사용가능 포인트</strong> <span><em>${S_POINT}</em> 점</span></li>
-					<li><strong>VIP선정 포인트</strong><a href="#" class="mycgv_tooltip">
-					<img src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip.png" alt="i" /></a>
-						<div>
-							<span><img
-								src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con2.png"
-								alt="CGV에서 구매를 통해 적립된 매표 구매 포인트/매점&amp;씨네샵 구매 포인트/VIP 선정에 포함되는 이벤트 포인트가 누적으로 합산된 포인트 입니다" /></span>
-						</div> <span><em>700</em> 점</span></li>
-				</ul>
-			</div>
-			<div>
-				<h3>자주가는 CGV</h3>
+				<h3>자주가는 극장</h3>
 				<div>
 					<ul>
-						<li><a href="#"><span>1<em>순위</em></span>CGV전주효자</a></li>
+						<li><a href="#"><span>1<em>순위</em></span>전주</a></li>
 						<li><a href="#"><span>2<em>순위</em></span></a></li>
 						<li><a href="#"><span>3<em>순위</em></span></a></li>
 						<li><a href="#"><span>4<em>순위</em></span></a></li>
 						<li><a href="#"><span>5<em>순위</em></span></a></li>
 					</ul>
 					<button title="새창" type="button">
-						자주가는 CGV<br />설정하기
+						자주가는 극장<br />설정하기
 					</button>
 				</div>
 			</div>
-			<div class="cols-point-wrap"></div>
 		</div>
 	</div>
 </div>

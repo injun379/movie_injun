@@ -15,33 +15,34 @@ public class MemberLoginProAction implements MemberActionInterFace {
 	public MemberActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("05_07_execute_MemberLoginProAction.java ");
 		request.setCharacterEncoding("utf-8");
-		//01´Ü°è : session°ªÀ» ¹Ş¾Æ ¿À°í È®ÀÎ
+		//01ë‹¨ê³„ : sessionê°’ì„ ë°›ì•„ ì˜¤ê³  í™•ì¸
 		HttpSession session = request.getSession();
 		String id = request.getParameter("login_id");
 		String pw = request.getParameter("login_pw");
 		System.out.println(id+" <-- id MemberLoginProAction.java");
 		System.out.println(pw+" <-- pw MemberLoginProAction.java");
    		
-		//02´Ü°è : ¾ÆÀÌµğ¿¡ ÇØ´çÇÏ´Â È¸¿ø Á¤º¸ °¡Á®¿À´Â ¸Ş¼­µå È£Ãâ
+		//02ë‹¨ê³„ : ì•„ì´ë””ì— í•´ë‹¹í•˜ëŠ” íšŒì› ì •ë³´ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ í˜¸ì¶œ
 		MemberDao memberdao = new MemberDao();
    		Member m = new Member();
    		String loginCheck = memberdao.memberLogin(id, pw);
    		m = memberdao.searchOneMember(id);
-		//03´Ü°è : ·Î±×ÀÎ Ã³¸®, °á°ú°ª ¼ÂÆÃ
    		
-   		if(loginCheck.equals("·Î±×ÀÎ ¼º°ø")){
+   		//03ë‹¨ê³„ : ë¡œê·¸ì¸ ì²˜ë¦¬, ê²°ê³¼ê°’ ì…‹íŒ…
+   		if(loginCheck.equals("ë¡œê·¸ì¸ ì„±ê³µ")){
    			session.setAttribute("S_ID", m.getM_id());
    			session.setAttribute("S_PW", m.getM_pw());
    			session.setAttribute("S_NAME", m.getM_name());
    			session.setAttribute("S_LEVEL", m.getM_level());
    			session.setAttribute("S_POINT", m.getM_point());
    		}
-		//04´Ü°è : MActionForward °´Ã¼³» ¼ÂÆÃ(true ¶Ç´Â False°ª°ú °æ·Î)
+   		
+   		//04ë‹¨ê³„ : MActionForward ê°ì²´ë‚´ ì…‹íŒ…(true ë˜ëŠ” Falseê°’ê³¼ ê²½ë¡œ)
 		MemberActionForward forward = new MemberActionForward();
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/index.movie");
 		
-		//05´Ü°è :  ¸Ş¼­µå È£ÃâÇÑ °÷À¸·Î ÁÖ¼Ò°ª ¸®ÅÏ
+		//05ë‹¨ê³„ :  ë©”ì„œë“œ í˜¸ì¶œí•œ ê³³ìœ¼ë¡œ ì£¼ì†Œê°’ ë¦¬í„´
 		return forward;
 	}
 

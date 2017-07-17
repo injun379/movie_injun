@@ -70,16 +70,22 @@ public class MemberController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		} else if(command.equals("/myInfo.movie")) {
-			System.out.println("04_06_/myInfo.movie");
+		} else if(command.equals("/myInfoAction.movie")) {
+			System.out.println("04_06_/myInfoAction.movie");
 			action = new MemberMyInfoAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/myInfo.movie")) {
+			System.out.println("04_07_/myInfo.movie");
+			forward = new MemberActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./myInfo.jsp");
+			
 		} else if(command.equals("/login/logout.movie")) {
-			System.out.println("04_07_/login/logout.movie");
+			System.out.println("04_08_/login/logout.movie");
 			action = new MemberLogoutAction();
 			try{
 				forward=action.execute(request, response);
@@ -87,13 +93,19 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(command.equals("/join/id_check.movie")) {
-			System.out.println("04_05_/join/id_check.movie");
+			System.out.println("04_09_/join/id_check.movie");
 			MemberIdCheckProAction ci = new MemberIdCheckProAction();
 			try{
 				ci.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		} else if(command.equals("/myInfo/member_confirm.movie")) {
+			System.out.println("04_10_/myInfo/member_confirm.movie");
+			forward = new MemberActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./confirm_password.jsp");
+			
 		}
 		
 		if(forward != null){
@@ -101,7 +113,7 @@ public class MemberController extends HttpServlet {
                 response.sendRedirect(forward.getPath());
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-                System.out.println(forward.getPath() + "<--- forward.getPath()[jsp �̵����] MemberFrontController.java");
+                System.out.println(forward.getPath() + "<--- forward.getPath()[jsp] MemberFrontController.java");
                 System.out.println();
                 dispatcher.forward(request, response);
             }

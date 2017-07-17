@@ -23,7 +23,7 @@ public class MemberMyInfoAction implements MemberActionInterFace {
 			
 		} else {
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath()+"/myInfo/myInfo.jsp");
+			forward.setPath(request.getContextPath()+"/myInfo.movie");
 			
 			return forward;
 		}

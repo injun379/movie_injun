@@ -12,7 +12,7 @@ public class DriverDB {
 	private String password;
 	private String driver;
 	
-	// db¿¬°á Á¤º¸°¡ ÀÖ´Â properties ÆÄÀÏ ³»¿ë °¡Á®¿À±â
+	// dbì—°ê²° ì •ë³´ê°€ ìˆëŠ” properties íŒŒì¼ ë‚´ìš© ê°€ì ¸ì˜¤ê¸°
 	
 	public void dbPropertiesInit() throws IOException{
 		FileInputStream fis = new FileInputStream("d:\\db.properties");

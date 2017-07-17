@@ -76,7 +76,7 @@ $(document).ready(function(){
 				<li><a href="${pageContext.request.contextPath}/login/logout.movie"><span>로그아웃</span></a></li>
 			</c:otherwise> 
 		</c:choose>
-		<li><a href="${pageContext.request.contextPath}/myInfo.movie"><span>내 정보</span></a></li>
+		<li><a href="${pageContext.request.contextPath}/myInfoAction.movie"><span>내 정보</span></a></li>
 		<!-- 2014.12.8 리뉴얼-->
 		<li><a href="#"><span>고객센터</span></a></li>
 		<!-- 2014.12.8 리뉴얼-->
